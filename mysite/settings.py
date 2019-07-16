@@ -90,11 +90,14 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': os.environ.get('PASSWORD'),
         'PORT': '5432',
-        'HOST': os.environ.get('HOST'),
     }
 }
 
-
+DATABASES['default']['HOST'] = '/cloudsql/$SQL'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = os.environ.get('HOST')
 
 LANGUAGE_CODE = 'en-us'
 
