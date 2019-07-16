@@ -90,34 +90,11 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': os.environ.get('PASSWORD'),
         'PORT': '5432',
+        'HOST': os.environ.get('SQL'),
     }
 }
 
-# Uncomment this DATABASES block and use it instead of the above if you are
-# using MySQL. Also follow the commented instructions in requirements.txt.
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'polls',
-#         'USER': '<your-database-user>',
-#         'PASSWORD': '<your-database-password>',
-#         'PORT': '3306',
-#     }
-# }
-
-# In the flexible environment, you connect to CloudSQL using a unix socket.
-# Locally, you can use the CloudSQL proxy to proxy a localhost connection
-# to the instance
-DATABASES['default']['HOST'] = '/cloudsql/$SQL'
-if os.getenv('GAE_INSTANCE'):
-    pass
-else:
-    DATABASES['default']['HOST'] = '127.0.0.1'
-# [END dbconfig]
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
